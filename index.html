@@ -3,126 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research.biz - Research Support for Medical Students</title>
+    <title>Research.biz - Bold & Premium Research Support</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f8f8f8;
+            background-color: #0f0f0f;
+            color: #f0f0f0;
         }
         header {
-            background: #1a73e8;
-            color: white;
-            padding: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #111;
+            border-bottom: 1px solid #222;
         }
-        nav {
-            background: #0f5dc1;
-            padding: 10px;
-            text-align: center;
+        header img {
+            height: 40px;
         }
         nav a {
-            color: white;
-            margin: 0 15px;
+            color: #f0f0f0;
+            margin-left: 20px;
             text-decoration: none;
             font-weight: bold;
         }
         nav a:hover {
-            text-decoration: underline;
+            color: #1a73e8;
         }
-        .container {
-            padding: 30px;
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            margin-top: 20px;
-            border-radius: 10px;
+        .hero {
+            text-align: center;
+            padding: 100px 20px 50px 20px;
+            background-color: #111;
         }
-        .service {
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
             margin-bottom: 30px;
         }
-        .service h3 {
+        .hero a {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .hero a:hover {
+            background-color: #1558b0;
+        }
+        .section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
             color: #1a73e8;
+        }
+        .service {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .service h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #111;
+        }
+        .cta-section a {
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 5px;
         }
         footer {
             text-align: center;
-            padding: 10px;
-            background: #ddd;
+            padding: 30px;
+            background-color: #111;
+            border-top: 1px solid #222;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        .image-section img {
+            width: 100%;
+            border-radius: 10px;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>RESEARCH.BIZ</h1>
-        <p>Supporting Medical Students in Their Research Journey</p>
-    </header>
 
+<header>
+    <img src="logo.png" alt="Research.biz Logo">
     <nav>
         <a href="#services">Services</a>
-        <a href="#process">How It Works</a>
-        <a href="#contact">Contact</a>
+        <a href="#pricing">Pricing</a>
+        <a href="upload.html">Get Started</a>
     </nav>
+</header>
 
-    <div class="container" id="about">
-        <h2>About Research.biz</h2>
-        <p>Research.biz is a dedicated platform that guides medical students through their research process. We offer personalized support to refine your proposals, analyze your data, and strengthen your thesis, ensuring you meet academic standards.</p>
+<div class="hero">
+    <h1>DATA THAT MATTERS</h1>
+    <p>Get personalized help with research proposals and thesis documents, tailored to medical students and beyond. Experience a free consultation today!</p>
+    <a href="upload.html">Get Started</a>
+</div>
+
+<div class="section image-section">
+    <img src="/mnt/data/8f4bf9aa-8b76-4bc8-b5b6-69ef949b9d20.png" alt="Medical Student Working">
+</div>
+
+<div class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="service">
+        <h3>Proposal Refinement</h3>
+        <p>Upload your research proposal and receive guidance to structure, strengthen, and align it with scientific standards.</p>
+        <p><strong>Price:</strong> 45,000 RWF per document</p>
     </div>
-
-    <div class="container" id="services">
-        <h2>Our Services & Pricing (Pay Per Document)</h2>
-
-        <div class="service">
-            <h3>Proposal Refinement</h3>
-            <p>Upload your research proposal and receive guidance to structure, strengthen, and align it with scientific standards.</p>
-            <p><strong>Price:</strong> 45,000 RWF per document</p>
-        </div>
-
-        <div class="service">
-            <h3>Data Analysis</h3>
-            <p>We support statistical and data interpretation needs to help you translate raw data into valuable research insights.</p>
-            <p><strong>Price:</strong> 150,000 RWF per dataset</p>
-        </div>
-
-        <div class="service">
-            <h3>Thesis Refinement</h3>
-            <p>Get assistance polishing your thesis to ensure clarity, organization, and academic excellence.</p>
-            <p><strong>Price:</strong> 100,000 RWF per thesis</p>
-        </div>
+    <div class="service">
+        <h3>Data Analysis</h3>
+        <p>We support statistical and data interpretation needs to help you translate raw data into valuable research insights.</p>
+        <p><strong>Price:</strong> 150,000 RWF per dataset</p>
     </div>
-
-        <div class="service">
-            <h3>Data Analysis</h3>
-            <p>We support statistical and data interpretation needs to help you translate raw data into valuable research insights.</p>
-        </div>
-
-        <div class="service">
-            <h3>Thesis Refinement</h3>
-            <p>Get assistance polishing your thesis to ensure clarity, organization, and academic excellence.</p>
-        </div>
+    <div class="service">
+        <h3>Thesis Refinement</h3>
+        <p>Get assistance polishing your thesis to ensure clarity, organization, and academic excellence.</p>
+        <p><strong>Price:</strong> 100,000 RWF per thesis</p>
     </div>
+</div>
 
-    <div class="container" id="process">
-        <h2>How It Works</h2>
-        <ol>
-            <li>Choose a service</li>
-            <li>Upload your document</li>
-            <li>Schedule a dedicated 30-minute consultation session</li>
-            <li>Receive personalized feedback and refinement</li>
-        </ol>
-    </div>
+<div class="cta-section">
+    <a href="upload.html">Upload Your Document & Request Service</a>
+</div>
 
-    <div class="container" id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: support@researchbiz.com</p>
-        <p>Phone: +000 123 456 789</p>
-        <p>Operating Hours: Mon - Sat | 9am - 5pm</p>
-    </div>
+<footer>
+    <p>&copy; 2025 Research.biz | All Rights Reserved</p>
+    <p>Email: support@researchbiz.com | Phone: +250 123 456 789</p>
+</footer>
 
-    <footer>
-        <p>&copy; 2025 Research.biz | All Rights Reserved</p>
-    </footer>
 </body>
 </html>
-
