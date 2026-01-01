@@ -6,47 +6,83 @@
 <style>
 body {
   font-family: 'Poppins', sans-serif;
-  background:#0A0F1F;
-  color:white;
-  text-align:center;
-  margin:0;
-  padding:0;
+  background: #0A0F1F;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
+
+header {
+  padding: 20px 40px;
+  background: #11172C;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 .container {
-  max-width:500px;
-  margin:80px auto;
-  background:#11172C;
-  padding:40px;
-  border-radius:12px;
+  max-width: 600px;
+  margin: 60px auto;
+  background: #11172C;
+  padding: 50px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
-h1 {font-size:36px; margin-bottom:20px;}
-p {font-size:16px; margin-bottom:30px;}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
 .button {
-  display:inline-block;
-  background:#001A72;
-  color:white;
-  padding:15px 40px;
-  font-size:18px;
-  font-weight:600;
-  border-radius:8px;
-  text-decoration:none;
+  display: inline-block;
+  background: #001A72;
+  color: white;
+  padding: 18px 50px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
 }
-.button:hover {background:#0029A8;}
+.button:hover {
+  background: #0029A8;
+  transform: translateY(-2px);
+}
+
+.note {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #bfbfbf;
+  line-height: 1.4;
+}
 </style>
 </head>
 <body>
+
+<header>Research.biz</header>
 
 <div class="container">
   <h1>Upload Your Proposal</h1>
   <p>Service: <strong>Proposal Refining — 40,000 RWF</strong></p>
   <p>Accepted file type: <strong>.doc, .docx only</strong></p>
 
-  <!-- Dropbox File Request Link -->
+  <!-- Dropbox File Request Button -->
   <a class="button" href="https://www.dropbox.com/request/WVCZGqTcwPWqWsmtoK0L" target="_blank">
     Upload to Dropbox
   </a>
 
-  <p style="margin-top:20px; font-size:14px;">After uploading, you will receive instructions to book your 30-min session.</p>
+  <p class="note">After uploading your proposal, you will receive instructions to book your 30-minute session. No Dropbox account is needed to upload your file.</p>
 </div>
 
 </body>
