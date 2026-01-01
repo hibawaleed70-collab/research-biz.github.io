@@ -2,71 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Upload Word Document</title>
+<title>Upload Proposal | Research.biz</title>
 <style>
-  body { font-family: Arial, sans-serif; }
-  .upload-box {
-    border: 2px dashed #555;
-    padding: 20px;
-    width: 350px;
-    margin-top: 20px;
-  }
-  #message {
-    margin-top: 10px;
-    font-weight: bold;
-  }
+body {
+  font-family: 'Poppins', sans-serif;
+  background:#0A0F1F;
+  color:white;
+  text-align:center;
+  margin:0;
+  padding:0;
+}
+.container {
+  max-width:500px;
+  margin:80px auto;
+  background:#11172C;
+  padding:40px;
+  border-radius:12px;
+}
+h1 {font-size:36px; margin-bottom:20px;}
+p {font-size:16px; margin-bottom:30px;}
+.button {
+  display:inline-block;
+  background:#001A72;
+  color:white;
+  padding:15px 40px;
+  font-size:18px;
+  font-weight:600;
+  border-radius:8px;
+  text-decoration:none;
+}
+.button:hover {background:#0029A8;}
 </style>
 </head>
 <body>
 
-<h2>Upload Your Research Document</h2>
+<div class="container">
+  <h1>Upload Your Proposal</h1>
+  <p>Service: <strong>Proposal Refining — 40,000 RWF</strong></p>
+  <p>Accepted file type: <strong>.doc, .docx only</strong></p>
 
-<form id="uploadForm" enctype="multipart/form-data">
-  <div class="upload-box">
-    <label for="fileInput"><b>Select Word file (.doc / .docx)</b></label><br><br>
-    <input type="file" id="fileInput"
-      accept=".doc, .docx, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-    <button type="submit">Upload</button>
-  </div>
-</form>
+  <!-- Dropbox File Request Link -->
+  <a class="button" href="https://www.dropbox.com/request/WVCZGqTcwPWqWsmtoK0L" target="_blank">
+    Upload to Dropbox
+  </a>
 
-<p id="message"></p>
-
-<script>
-document.getElementById("uploadForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // Stop page refresh
-
-  const fileInput = document.getElementById("fileInput");
-  const file = fileInput.files[0];
-  const message = document.getElementById("message");
-
-  if (!file) {
-    message.style.color = "red";
-    message.innerText = "Please select a file before uploading.";
-    return;
-  }
-
-  const allowedTypes = [
-    "application/msword",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-  ];
-
-  if (!allowedTypes.includes(file.type)) {
-    message.style.color = "red";
-    message.innerText = "❌ Only Word documents (.doc / .docx) are allowed!";
-    fileInput.value = "";
-    return;
-  }
-
-  // If valid
-  message.style.color = "green";
-  message.innerText = `✔ File "${file.name}" uploaded successfully! (Demo only)`;
-
-  // --- IMPORTANT ---
-  // To actually save the file you need a server.
-  // GitHub Pages cannot store uploads — you would need Firebase/Backend/etc.
-});
-</script>
+  <p style="margin-top:20px; font-size:14px;">After uploading, you will receive instructions to book your 30-min session.</p>
+</div>
 
 </body>
 </html>
