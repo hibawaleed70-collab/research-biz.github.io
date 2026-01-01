@@ -80,14 +80,13 @@
         return;
       }
 
-      // Mandatory: use user's name in the filename
       const name = document.getElementById("fullName").value.trim();
       if(!name) {
         alert("Full Name is required!");
         return;
       }
 
-      const dropboxPath = '/' + name.replace(/\s+/g, '_') + '_' + file.name;
+      const dropboxPath = '/Proposals/' + name.replace(/\s+/g, '_') + '_' + file.name;
 
       const reader = new FileReader();
       reader.onload = function() {
