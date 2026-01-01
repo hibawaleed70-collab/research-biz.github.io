@@ -1,95 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upload Proposal</title>
-<script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #fdf6e3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .container {
-    background: #fff7e6;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 350px;
-  }
-  h2 {
-    text-align: center;
-    color: #333;
-  }
-  input[type="text"], input[type="email"], input[type="tel"], input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  button {
-    width: 100%;
-    padding: 12px;
-    background-color: #f0a500;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #d98f00;
-  }
-  #status {
-    text-align: center;
-    margin-top: 10px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student File Upload</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; padding: 40px; display: flex; justify-content: center; }
+    .container { background: #fff3e0; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+    h2 { text-align: center; margin-bottom: 20px; color: #d35400; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input[type="text"], input[type="email"], input[type="file"] {
+      width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc;
+    }
+    button { margin-top: 20px; width: 100%; padding: 12px; background: #d35400; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #e67e22; }
+    .status { margin-top: 15px; text-align: center; font-weight: bold; }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Upload Your Word Document</h2>
+    <form id="uploadForm">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" required>
 
-<div class="container">
-  <h2>Upload Proposal</h2>
-  <input type="text" placeholder="Full Name" required id="fullName">
-  <input type="email" placeholder="Email" required id="email">
-  <input type="tel" placeholder="Phone Number" required id="phone">
-  <input type="file" id="fileUpload" accept=".doc,.docx" required>
-  <button id="uploadBtn">Submit & Upload</button>
-  <p id="status"></p>
-</div>
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" required>
 
-<script>
-  // Replace with your Dropbox access token
-  const dbx = new Dropbox.Dropbox({ accessToken: 'sl.u.AGNdRUtMk_Nw_rHRptcmUL-kgx6xQCxWUohwcckLKNLTRLPI0Xu6Bvk2oq4F3Bk2vki-7D0Zj_6HV4krMVpcpwRwmtIuoFf7Ng3r2tDF0Q4S-cv7FLTzbJPcAHWlkgR0_11mBcpfvnmwAB3hxjdURSuGI83SnElF8ifYkihO1MkBvo20kaCr_P2JHcZylf2V2AyvZ17ipjbg2LYeAz6iDT43rghYZ5oA-OmAEd647UPbb9R4GaqU6Jo23OMaf22khmsVVKMOFI3KHK81yNjIEkcsG_i9ArwWqoz1-jUJN5kRxm3xKeyy5IXU4Pr910Kpy_UlUV-US5DUwG3nnbMvVBRQyEc3bnLIw_lerHE18csr7NjUijLWCfAFPxrYqx78iZHQNsdGW8KVlxZDIBFrYuR0ri9c91ihe0EWCMax17KyLYXT76E5ChCaTY9EEXglRYzVI7AHQLifSKvZImg73WM6wTdAPBE_PPX1jSC8BB8aZkev1ttvhT87eveHGa4FltdcrMJd6EWdXeFfbUJHnFb3LCxgTBkKxkIe05BaThk7zDWaGAlkyGhTPKYlnSJwuxEdU8Lbtf1w5hTkWEDfMTTJmGTEkurRWeFDGADDuWN3PSequnkB4oQuVW62WSixchFh5wsfZp_YDYV04A9F4TT9vYjtJrLA-XQxaV4VT73js4nDcwGBCWeIar9oGVtggC3koqF20Nfllf_ILxQUA9PYDT-knCq-nUMVwh6-w_R0wcZW_ukHN-Z3XpFJec5j3voVvaE5h5F4aCXXOQExFD-Nt3B_LDf-aXbyPaqviEqA07IS2irOVMYxexXBSC6ipKCpIZzQ41JpthVEp08dzRFS_WOty4JHbS1etX91Ig-bt9eXIRYwYl0y2YrB5TIndBuZbyZMafp9Bjzcw75VC7ZqvxqZDwHO0Kskg8A4lfqAA1c8CBMPKNYRJW_Y69RTIFJu5Bz7H6kUiV54b13S0bjhtRfNItpNbd3FJLtH1WP8GyFJcBhDZt3gdSBXVXfBss9RG2yUOIjsFeRBiu600cbbIe4VRWYZVCUMP9US57PB5jZvtb7pZj6EN2wdmcuIHrzredp2z_IUkkbheYj_GcHgzPos83RZQcxaCnAXGN8o3K8IhyGN9KSXwDB1IcBONkvjanLBhRDF610xrWnhAfQet9E6VQF0SDqj6g4Z5moqRQ49tTFcLnzKiJHf9OHJn3GDi1wzaEdyHtZd56Sy6ypxbkQGzgIOthaGsgQFLBYRyWtMOLc5W1EqAG3dv0cuQTY' });
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone">
 
-  document.getElementById("uploadBtn").addEventListener("click", async () => {
-    const name = document.getElementById("fullName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const fileInput = document.getElementById("fileUpload");
-    const file = fileInput.files[0];
-    const status = document.getElementById("status");
+      <label for="file">Select Word Document *</label>
+      <input type="file" id="file" accept=".doc,.docx" required>
 
-    if (!name || !email || !phone || !file) {
-      alert("Please fill in all fields and select a file.");
-      return;
-    }
+      <button type="submit">Upload</button>
+    </form>
+    <div class="status" id="status"></div>
+  </div>
 
-    status.textContent = "Uploading... ⏳";
+  <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+  <script>
+    const ACCESS_TOKEN = 'sl.u.AGNdRUtMk_Nw_rHRptcmUL-kgx6xQCxWUohwcckLKNLTRLPI0Xu6Bvk2oq4F3Bk2vki-7D0Zj_6HV4krMVpcpwRwmtIuoFf7Ng3r2tDF0Q4S-cv7FLTzbJPcAHWlkgR0_11mBcpfvnmwAB3hxjdURSuGI83SnElF8ifYkihO1MkBvo20kaCr_P2JHcZylf2V2AyvZ17ipjbg2LYeAz6iDT43rghYZ5oA-OmAEd647UPbb9R4GaqU6Jo23OMaf22khmsVVKMOFI3KHK81yNjIEkcsG_i9ArwWqoz1-jUJN5kRxm3xKeyy5IXU4Pr910Kpy_UlUV-US5DUwG3nnbMvVBRQyEc3bnLIw_lerHE18csr7NjUijLWCfAFPxrYqx78iZHQNsdGW8KVlxZDIBFrYuR0ri9c91ihe0EWCMax17KyLYXT76E5ChCaTY9EEXglRYzVI7AHQLifSKvZImg73WM6wTdAPBE_PPX1jSC8BB8aZkev1ttvhT87eveHGa4FltdcrMJd6EWdXeFfbUJHnFb3LCxgTBkKxkIe05BaThk7zDWaGAlkyGhTPKYlnSJwuxEdU8Lbtf1w5hTkWEDfMTTJmGTEkurRWeFDGADDuWN3PSequnkB4oQuVW62WSixchFh5wsfZp_YDYV04A9F4TT9vYjtJrLA-XQxaV4VT73js4nDcwGBCWeIar9oGVtggC3koqF20Nfllf_ILxQUA9PYDT-knCq-nUMVwh6-w_R0wcZW_ukHN-Z3XpFJec5j3voVvaE5h5F4aCXXOQExFD-Nt3B_LDf-aXbyPaqviEqA07IS2irOVMYxexXBSC6ipKCpIZzQ41JpthVEp08dzRFS_WOty4JHbS1etX91Ig-bt9eXIRYwYl0y2YrB5TIndBuZbyZMafp9Bjzcw75VC7ZqvxqZDwHO0Kskg8A4lfqAA1c8CBMPKNYRJW_Y69RTIFJu5Bz7H6kUiV54b13S0bjhtRfNItpNbd3FJLtH1WP8GyFJcBhDZt3gdSBXVXfBss9RG2yUOIjsFeRBiu600cbbIe4VRWYZVCUMP9US57PB5jZvtb7pZj6EN2wdmcuIHrzredp2z_IUkkbheYj_GcHgzPos83RZQcxaCnAXGN8o3K8IhyGN9KSXwDB1IcBONkvjanLBhRDF610xrWnhAfQet9E6VQF0SDqj6g4Z5moqRQ49tTFcLnzKiJHf9OHJn3GDi1wzaEdyHtZd56Sy6ypxbkQGzgIOthaGsgQFLBYRyWtMOLc5W1EqAG3dv0cuQTY'; // Replace with your Dropbox access token
+    const dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
 
-    const dropboxPath = `/Proposals/${name.replace(/\s+/g, "_")}_${file.name}`;
+    const form = document.getElementById('uploadForm');
+    const statusDiv = document.getElementById('status');
 
-    const reader = new FileReader();
-    reader.onload = async () => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const fileInput = document.getElementById('file');
+      const file = fileInput.files[0];
+
+      if (!file || !name || !email) {
+        statusDiv.textContent = 'Please fill all required fields and select a file.';
+        return;
+      }
+
+      statusDiv.textContent = 'Uploading... Please wait.';
+
       try {
-        await dbx.filesUpload({ path: dropboxPath, contents: reader.result });
-        status.textContent = "✔ File uploaded successfully!";
-        fileInput.value = ""; // reset file input
-      } catch (error) {
-        console.error(error);
+        // Prepend name to the filename
+        const filename = `${name.replace(/\s+/g,'_')}_${file.name}`;
+        const CHUNK_SIZE = 8 * 1024 * 1024; // 8MB per chunk
+
+        // Chunked upload function
+        async function uploadFile(file) {
+          if (file.size <= CHUNK_SIZE) {
+            // Small file, upload directly
+            await dbx.filesUpload({ path: '/' + filename, contents: file });
+          } else {
+            // Large file, chunked upload
+            let offset = 0;
+            let sessionId;
+
+            while (offset < file.size) {
+              const slice = file.slice(offset, offset + CHUNK_SIZE);
+              const arrayBuffer = await slice.arrayBuffer();
+              if (offset === 0) {
+                const response = await dbx.filesUploadSessionStart({ close: false, contents: arrayBuffer });
+                sessionId = response.result.session_id;
+              } else if ((offset + CHUNK_SIZE) >= file.size) {
+                await dbx.filesUploadSessionFinish({
+                  cursor: { session_id: sessionId, offset: offset },
+                  commit: { path: '/' + filename, mode: 'add', autorename: true, mute: false },
+                  contents: arrayBuffer
+                });
+              } else {
+                await dbx.filesUploadSessionAppendV2({
+                  cursor: { session_id: sessionId, offset: offset },
+                  contents: arrayBuffer
+                });
+              }
+              offset += CHUNK_SIZE;
+            }
+          }
+        }
+
+        await uploadFile(file);
+
+        // Save log with Name, Email, Phone, Filename
+        const logPath = '/upload_log.json';
+        let logData = [];
+        try {
+          const existing = await dbx.filesDownload({ path: logPath });
+          const text = new TextDecoder('utf-8').decode(existing.result.fileBlob);
+          logData = JSON.parse(text);
+        } catch (err) {
+          // File may not exist yet, that’s fine
+        }
+
+        logData.push({ name, email, phone, filename, timestamp: new Date().toISOString() });
+        await dbx.filesUpload({ path: logPath, contents: JSON.stringify(logData, null, 2), mode: 'overwrite' });
+
+        statusDiv.textContent = 'Upload successful!';
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        statusDiv.textContent = 'Upload failed. Check console for details.';
+      }
+    });
+  </script>
+</body>
+</html>
