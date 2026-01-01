@@ -1,127 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student File Upload</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #fdf6e3; padding: 40px; display: flex; justify-content: center; }
-    .container { background: #fff3e0; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
-    h2 { text-align: center; margin-bottom: 20px; color: #d35400; }
-    label { display: block; margin-top: 15px; font-weight: bold; }
-    input[type="text"], input[type="email"], input[type="file"] {
-      width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc;
-    }
-    button { margin-top: 20px; width: 100%; padding: 12px; background: #d35400; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; }
-    button:hover { background: #e67e22; }
-    .status { margin-top: 15px; text-align: center; font-weight: bold; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropbox File Upload</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 40px; }
+    form { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+    label { display: block; margin-top: 15px; }
+    input { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+    button { margin-top: 20px; padding: 10px 20px; border: none; background: #4CAF50; color: white; font-size: 16px; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #45a049; }
+    #message { margin-top: 20px; font-weight: bold; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h2>Upload Your Word Document</h2>
-    <form id="uploadForm">
-      <label for="name">Full Name *</label>
-      <input type="text" id="name" required>
 
-      <label for="email">Email Address *</label>
-      <input type="email" id="email" required>
+<h2 style="text-align:center;">Upload Your File</h2>
 
-      <label for="phone">Phone Number</label>
-      <input type="text" id="phone">
+<form id="uploadForm">
+    <label for="name">Full Name *</label>
+    <input type="text" id="name" required>
 
-      <label for="file">Select Word Document *</label>
-      <input type="file" id="file" accept=".doc,.docx" required>
+    <label for="email">Email *</label>
+    <input type="email" id="email" required>
 
-      <button type="submit">Upload</button>
-    </form>
-    <div class="status" id="status"></div>
-  </div>
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone">
 
-  <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-  <script>
-    const ACCESS_TOKEN = 'sl.u.AGOVLFHXZF1YjwLEq7kHIBTd-ZHewAyhmKzCHDlEUcaXtseS2oESwr9cn2_6BdkH466UUNdvoHwKdkv9EY6ckMnFnYxzwWkcRPeSvCLLeXUja8SJgspmJ2wMwrDwx3w6tIpurRqMXUgXLD-kFkuep-xr2Fl3eelByFE8j8PmCsUL4F72YvGiDhnjJDZt1vdzjCRV7Vc6O-1Arohez7LyN6PPia04ZE3UccWEQUrmHqHfaqe_2jYvbT-W5VTIsxMV5_kQQ5JqOFIPBUQuxYl7coSdkwS6uwc8I63FVlWXLxqqYIvQeZ1AbpINMD5QgT65uCyYmmnV7xV6wi0KwPPfqAnZCcNcl_xrmSOxoBCvoGKtJ4orpk5Z39esSyw3Rdh7FM8i05xeTv_XSzEP4PNk3O65QJfKrk_pi3_i9pxvaxD7qbGF_yj_YvDO5S32L35ZgN0U8Ko-WGRSMzMZgAgk0bCW0oxjrcwjUaUbrsbUncvUf_S-XaYfgJPNB66jfd6_xwUKCkObJ3lOmIMhvy7s7pv0UQDCMtHWQ2mGOPPojM0oyhzzKCtcJF_1eDYYUt712coM-Bqq0LISVjeyDecGaHc1SUdUasRU950tT1oZc86b66cEGA-ZeAShXBB42ReocaWfwogB5tQfMpipBg6cu54iordyW0W2Y0HQYHo8q8bMh9TRRHRsJDEjtZ83EXKXsjIF4g62nWi8d1RtmO2y4kXCYBhfMHOKrdDdhGvoViDeyUQ80POtYQktfzNMHk2lfnuIJqlX_10A1ICEtbkDttoyESejaYRJ7cMGEcgBIww3SHM7UqzpswTVzS7-BKd0K_rO5bhf72uqyhJ9WkfEhinpQ2RPqSn0fIoyUq0wE22E7kKrEgXZdLfaS56lwrHJ-ukdUzbB7mOGY45fFxbxZcZHz0pe2RWppUJoxuY4g58gcCW0uXsEKyvVf8MtbcaNbxnAYGwu1asgtq3abYW5T_yRmt3QdAImX6FJlZuTfafKD7fUKE5arb9NPGY5P8-xph0KCufBkjhsiGIXPO6ujZq6_4IWSTFYjBiQNED8E2zC5sD64SlkJhDKTPEkK3St9U5J6C5wnxhFE5XK9dDxsvAr_MQH19-AMFLc80VBLt-Os9GiXgztadgRgCYixNL9Wpm1XQlx_uz7Y73nBOf97kDN_1L6BKYpM9CHFI0nJvZ4rv12HNrf-37nKVSNEBi-Il9G782hngs1mCCmeP8bRFdVS4sduJennkxqrgHRA2SxjU2LCFEmU1E96Q_BMhYI-C4'
-    const dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
+    <label for="file">Select File *</label>
+    <input type="file" id="file" required>
 
-    const form = document.getElementById('uploadForm');
-    const statusDiv = document.getElementById('status');
+    <button type="submit">Submit</button>
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const fileInput = document.getElementById('file');
-      const file = fileInput.files[0];
+    <div id="message"></div>
+</form>
 
-      if (!file || !name || !email) {
-        statusDiv.textContent = 'Please fill all required fields and select a file.';
+<script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+<script>
+const ACCESS_TOKEN = 'sl.u.AGOVLFHXZF1YjwLEq7kHIBTd-ZHewAyhmKzCHDlEUcaXtseS2oESwr9cn2_6BdkH466UUNdvoHwKdkv9EY6ckMnFnYxzwWkcRPeSvCLLeXUja8SJgspmJ2wMwrDwx3w6tIpurRqMXUgXLD-kFkuep-xr2Fl3eelByFE8j8PmCsUL4F72YvGiDhnjJDZt1vdzjCRV7Vc6O-1Arohez7LyN6PPia04ZE3UccWEQUrmHqHfaqe_2jYvbT-W5VTIsxMV5_kQQ5JqOFIPBUQuxYl7coSdkwS6uwc8I63FVlWXLxqqYIvQeZ1AbpINMD5QgT65uCyYmmnV7xV6wi0KwPPfqAnZCcNcl_xrmSOxoBCvoGKtJ4orpk5Z39esSyw3Rdh7FM8i05xeTv_XSzEP4PNk3O65QJfKrk_pi3_i9pxvaxD7qbGF_yj_YvDO5S32L35ZgN0U8Ko-WGRSMzMZgAgk0bCW0oxjrcwjUaUbrsbUncvUf_S-XaYfgJPNB66jfd6_xwUKCkObJ3lOmIMhvy7s7pv0UQDCMtHWQ2mGOPPojM0oyhzzKCtcJF_1eDYYUt712coM-Bqq0LISVjeyDecGaHc1SUdUasRU950tT1oZc86b66cEGA-ZeAShXBB42ReocaWfwogB5tQfMpipBg6cu54iordyW0W2Y0HQYHo8q8bMh9TRRHRsJDEjtZ83EXKXsjIF4g62nWi8d1RtmO2y4kXCYBhfMHOKrdDdhGvoViDeyUQ80POtYQktfzNMHk2lfnuIJqlX_10A1ICEtbkDttoyESejaYRJ7cMGEcgBIww3SHM7UqzpswTVzS7-BKd0K_rO5bhf72uqyhJ9WkfEhinpQ2RPqSn0fIoyUq0wE22E7kKrEgXZdLfaS56lwrHJ-ukdUzbB7mOGY45fFxbxZcZHz0pe2RWppUJoxuY4g58gcCW0uXsEKyvVf8MtbcaNbxnAYGwu1asgtq3abYW5T_yRmt3QdAImX6FJlZuTfafKD7fUKE5arb9NPGY5P8-xph0KCufBkjhsiGIXPO6ujZq6_4IWSTFYjBiQNED8E2zC5sD64SlkJhDKTPEkK3St9U5J6C5wnxhFE5XK9dDxsvAr_MQH19-AMFLc80VBLt-Os9GiXgztadgRgCYixNL9Wpm1XQlx_uz7Y73nBOf97kDN_1L6BKYpM9CHFI0nJvZ4rv12HNrf-37nKVSNEBi-Il9G782hngs1mCCmeP8bRFdVS4sduJennkxqrgHRA2SxjU2LCFEmU1E96Q_BMhYI-C4' 
+const dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
+
+const form = document.getElementById('uploadForm');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const fileInput = document.getElementById('file');
+
+    if (!name) {
+        message.style.color = 'red';
+        message.innerText = "❌ Name is required!";
         return;
-      }
+    }
 
-      statusDiv.textContent = 'Uploading... Please wait.';
+    if (!fileInput.files.length) {
+        message.style.color = 'red';
+        message.innerText = "❌ Please select a file!";
+        return;
+    }
 
-      try {
-        // Prepend name to the filename
-        const filename = `${name.replace(/\s+/g,'_')}_${file.name}`;
-        const CHUNK_SIZE = 8 * 1024 * 1024; // 8MB per chunk
+    const file = fileInput.files[0];
+    const dropboxFileName = `/${name}-${file.name}`; // prepend name to file
 
-        // Chunked upload function
-        async function uploadFile(file) {
-          if (file.size <= CHUNK_SIZE) {
-            // Small file, upload directly
-            await dbx.filesUpload({ path: '/' + filename, contents: file });
-          } else {
-            // Large file, chunked upload
-            let offset = 0;
-            let sessionId;
-
-            while (offset < file.size) {
-              const slice = file.slice(offset, offset + CHUNK_SIZE);
-              const arrayBuffer = await slice.arrayBuffer();
-              if (offset === 0) {
-                const response = await dbx.filesUploadSessionStart({ close: false, contents: arrayBuffer });
-                sessionId = response.result.session_id;
-              } else if ((offset + CHUNK_SIZE) >= file.size) {
-                await dbx.filesUploadSessionFinish({
-                  cursor: { session_id: sessionId, offset: offset },
-                  commit: { path: '/' + filename, mode: 'add', autorename: true, mute: false },
-                  contents: arrayBuffer
-                });
-              } else {
-                await dbx.filesUploadSessionAppendV2({
-                  cursor: { session_id: sessionId, offset: offset },
-                  contents: arrayBuffer
-                });
-              }
-              offset += CHUNK_SIZE;
-            }
-          }
-        }
-
-        await uploadFile(file);
-
-        // Save log with Name, Email, Phone, Filename
-        const logPath = '/upload_log.json';
-        let logData = [];
+    const reader = new FileReader();
+    reader.onload = async function() {
         try {
-          const existing = await dbx.filesDownload({ path: logPath });
-          const text = new TextDecoder('utf-8').decode(existing.result.fileBlob);
-          logData = JSON.parse(text);
+            await dbx.filesUpload({
+                path: dropboxFileName,
+                contents: reader.result,
+                mode: { ".tag": "add" },
+                autorename: true
+            });
+            message.style.color = 'green';
+            message.innerText = `✔ File uploaded successfully as "${dropboxFileName}"!\nEmail: ${email}\nName: ${name}`;
+            form.reset();
         } catch (err) {
-          // File may not exist yet, that’s fine
+            console.error("Dropbox upload error:", err);
+            message.style.color = 'red';
+            message.innerText = "❌ Upload failed. Check console for details.";
         }
+    };
+    reader.readAsArrayBuffer(file);
+});
+</script>
 
-        logData.push({ name, email, phone, filename, timestamp: new Date().toISOString() });
-        await dbx.filesUpload({ path: logPath, contents: JSON.stringify(logData, null, 2), mode: 'overwrite' });
-
-        statusDiv.textContent = 'Upload successful!';
-        form.reset();
-      } catch (err) {
-        console.error(err);
-        statusDiv.textContent = 'Upload failed. Check console for details.';
-      }
-    });
-  </script>
 </body>
 </html>
