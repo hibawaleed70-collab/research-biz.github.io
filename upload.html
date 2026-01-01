@@ -1,35 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Upload & Booking — Research.co</title>
+<meta charset="UTF-8">
+<title>Upload Proposal | Research.co</title>
 <style>
-body{margin:0; font-family:'Poppins',sans-serif; background:#0A0F1F; color:white; text-align:center;}
-form{background:#0D162F; max-width:500px; margin:50px auto; padding:40px; border-radius:12px;}
-input,select{
-  width:100%; padding:12px; margin-bottom:20px; border:none; border-radius:6px;
+body {
+  font-family: 'Poppins', sans-serif;
+  background:#0A0F1F;
+  margin:0;
+  padding:0;
+  color:white;
 }
-button{padding:15px 45px; background:#001A72; border:none; color:white;
-font-size:18px; font-weight:600; border-radius:6px; cursor:pointer;}
-button:hover{background:#0029A8;}
+
+.container {
+  width: 60%;
+  margin: 60px auto;
+  background:#11172C;
+  padding:40px;
+  border-radius:12px;
+}
+
+h1 {
+  margin-top:0;
+  font-size:36px;
+  font-weight:700;
+}
+
+label {
+  display:block;
+  margin-top:20px;
+  font-weight:600;
+}
+
+input, select {
+  width:100%;
+  padding:12px;
+  margin-top:8px;
+  border-radius:6px;
+  border:none;
+  background:#1A233A;
+  color:white;
+  font-size:16px;
+}
+
+button {
+  margin-top:30px;
+  width:100%;
+  padding:15px;
+  background:#001A72;
+  border:none;
+  color:white;
+  font-size:18px;
+  font-weight:600;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+button:hover {
+  background:#0029A8;
+}
+
+.small {
+  color:#bfbfbf;
+  font-size:13px;
+  margin-top:5px;
+}
 </style>
 </head>
-
 <body>
+
+<div class="container">
+
 <h1>Upload Your Proposal</h1>
-<p>After review, you will receive a link to schedule your meeting.</p>
+<p>Service: <strong>Proposal Refining — 40,000 RWF</strong></p>
 
-<!-- We can later connect this form to email or Google Drive -->
-<form>
-  <input type="text" placeholder="Full Name" required>
-  <input type="email" placeholder="Email" required>
-  <input type="tel" placeholder="Phone Number" required>
-  <input type="file" accept=".doc,.docx" required>
+<form id="uploadForm">
 
-  <!-- PAYMENT SECTION (placeholder until you give code) -->
-  <p><strong>Payment: 40,000 RWF</strong><br>via MTN MoMo Pay</p>
-  <p><em>*Payment details will appear here*</em></p>
+  <label>Your Full Name</label>
+  <input type="text" required placeholder="Your name">
 
-  <button type="submit">Submit & Book</button>
+  <label>Email Address</label>
+  <input type="email" required placeholder="example@gmail.com">
+
+  <label>Phone Number</label>
+  <input type="tel" required placeholder="07XXXXXXXX">
+
+  <label>Upload Proposal Document</label>
+  <input type="file" id="fileUpload" accept=".doc,.docx" required>
+  <p class="small">Accepted: .doc or .docx (Microsoft Word only)</p>
+
+  <button type="submit">Submit & Book Session</button>
+
 </form>
+
+</div>
+
+<script>
+// block wrong formats even if user tries to force it
+document.getElementById("fileUpload").addEventListener("change", function () {
+  const file = this.files[0];
+  if (file) {
+    const allowed = ["application/msword", 
+                     "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    if (!allowed.includes(file.type)) {
+      alert("Only Word documents are allowed (.doc or .docx)");
+      this.value = ""; // reset file
+    }
+  }
+});
+
+document.getElementById("uploadForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert("Your proposal has been uploaded!\nNext: MoMo Pay & booking integration.");
+  // later we will redirect to MoMo payment or calendar booking
+});
+</script>
+
 </body>
 </html>
